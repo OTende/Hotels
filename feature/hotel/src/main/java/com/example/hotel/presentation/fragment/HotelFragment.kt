@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +23,8 @@ import com.example.hotel.presentation.adapter.PeculiarityAdapter
 import com.example.hotel.presentation.adapter.PhotoAdapter
 import com.example.hotel.presentation.viewmodel.HotelViewModel
 import javax.inject.Inject
+
+const val ROOM_URI = "android-app:/room"
 
 class HotelFragment : Fragment() {
     @Inject
@@ -44,6 +49,13 @@ class HotelFragment : Fragment() {
     ): View {
         _binding = FragmentHotelBinding.inflate(inflater, container, false)
         viewModel.updateHotel()
+        binding.roomButton.setOnClickListener {
+            val request = NavDeepLinkRequest.Builder
+                .fromUri((ROOM_URI).toUri())
+                .build()
+            findNavController().navigate(request)
+        }
+
         viewModel.hotel.observe(viewLifecycleOwner) { result ->
             when (result.status) {
                 Status.SUCCESS -> {
@@ -63,12 +75,9 @@ class HotelFragment : Fragment() {
                 }
 
                 Status.ERROR -> {
-//                    binding.asd.text = result.message
                 }
                 Status.LOADING -> {
-//                    binding.asd.text = "is loading"
                 }
-//                binding.hotelRatingCv.findViewById<TextView>()
             }
         }
         return binding.root
