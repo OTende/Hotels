@@ -13,10 +13,15 @@
 
         <deepLink
             android:id="@+id/room_deep_link"
-            app:uri="android-app:/room"/>
+            app:uri="android-app:/room/{hotelName}" />
+
+        <argument
+            android:name="hotelName"
+            android:defaultValue=""
+            app:argType="string" />
     </fragment>
 
     <deepLink
         android:id="@+id/room_deep_link"
-        app:uri="android-app:/room"/>
+        app:uri="android-app:/room" />
 </navigation>

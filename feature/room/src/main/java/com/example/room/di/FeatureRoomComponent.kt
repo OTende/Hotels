@@ -5,7 +5,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component
+@Component(modules = [FeatureRoomModule::class])
 interface FeatureRoomComponent {
     fun inject(roomFragment: RoomFragment)
 }

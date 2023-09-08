@@ -10,5 +10,5 @@ import javax.inject.Singleton
 abstract class RepositoryModule {
     @Binds
     @Singleton
-    abstract fun bindHotelRepository(hotelRepositoryImpl: RoomRepositoryImpl): RoomRepository
+    abstract fun bindRoomRepository(roomRepository: RoomRepositoryImpl): RoomRepository
 }

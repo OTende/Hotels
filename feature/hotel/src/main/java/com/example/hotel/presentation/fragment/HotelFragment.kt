@@ -5,15 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.core.domain.util.Status
 import com.example.hotel.R
@@ -24,7 +19,7 @@ import com.example.hotel.presentation.adapter.PhotoAdapter
 import com.example.hotel.presentation.viewmodel.HotelViewModel
 import javax.inject.Inject
 
-const val ROOM_URI = "android-app:/room"
+const val ROOM_URI = "android-app:/room/"
 
 class HotelFragment : Fragment() {
     @Inject
@@ -50,8 +45,9 @@ class HotelFragment : Fragment() {
         _binding = FragmentHotelBinding.inflate(inflater, container, false)
         viewModel.updateHotel()
         binding.roomButton.setOnClickListener {
+//            val bundle = bundleOf("hotelName" to binding.hotelName.text)
             val request = NavDeepLinkRequest.Builder
-                .fromUri((ROOM_URI).toUri())
+                .fromUri((ROOM_URI + binding.hotelName.text).toUri())
                 .build()
             findNavController().navigate(request)
         }
