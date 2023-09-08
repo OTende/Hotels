@@ -36,7 +36,9 @@ class BookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
-        val adapter = TouristAdapter()
+        val adapter = TouristAdapter(resources) {
+            viewModel.addTourist()
+        }
         binding.touristsRv.adapter = adapter
         binding.touristsRv.layoutManager = LinearLayoutManager(requireContext())
         viewModel.tourists.observe(viewLifecycleOwner) {

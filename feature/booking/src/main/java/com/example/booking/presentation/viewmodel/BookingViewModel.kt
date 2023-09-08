@@ -14,7 +14,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BookingViewModel @Inject constructor(private val repository: BookingRepository) : ViewModel() {
+class BookingViewModel @Inject constructor(private val repository: BookingRepository) :
+    ViewModel() {
     class Factory @Inject constructor(private val repository: BookingRepository) :
         ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -35,14 +36,14 @@ class BookingViewModel @Inject constructor(private val repository: BookingReposi
         }
     }
 
-    private val _tourists = MutableLiveData<List<Tourist>>()
-    val tourists: LiveData<List<Tourist>> = _tourists
+    private val _tourists = MutableLiveData<MutableList<Tourist>>()
+    val tourists: MutableLiveData<MutableList<Tourist>> = _tourists
 
     init {
-        _tourists.postValue(listOf(Tourist.getEmptyTourist()))
+        _tourists.postValue(mutableListOf(Tourist.getEmptyTourist()))
     }
 
     fun addTourist() {
-
+        _tourists.value?.add(Tourist.getEmptyTourist())
     }
 }

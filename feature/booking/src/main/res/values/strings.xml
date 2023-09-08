@@ -10,10 +10,14 @@
     <string name="buyer_info">Информация о покупателе</string>
     <string name="phone_number">Номер телефона</string>
     <string name="email">Почта</string>
-    <string name="nothing">Эти данные никому не передаются. После оплаты мы вышлем чек на указанный вами номер и почту</string>
+    <string name="nothing">Эти данные никому не передаются. После оплаты мы вышлем чек на указанные вами номер и почту</string>
     <string name="dates_window">%1$s - %2$s</string>
     <string name="n_tourist">%1$s турист</string>
     <string name="collide">Свернуть</string>
     <string name="name">Имя</string>
     <string name="last_name">Фамилия</string>
+    <string name="birthday">День рождения</string>
+    <string name="citizenship">Гражданство</string>
+    <string name="foreign_passport_number">Номер загранпаспорта</string>
+    <string name="foreign_passport_date">Срок действия загранпаспорта</string>
 </resources>
