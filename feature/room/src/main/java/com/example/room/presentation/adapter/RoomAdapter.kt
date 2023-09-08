@@ -3,13 +3,18 @@ package com.example.room.presentation.adapter
 import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.core.net.toUri
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.room.R
 import com.example.room.data.model.Room
 import com.example.room.databinding.RoomItemBinding
+
+const val BOOKING_URI = "android-app:/booking/"
 
 class RoomAdapter(private val rooms: List<Room>, private val resources: Resources) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
     class RoomViewHolder(private val binding: RoomItemBinding, private val resources: Resources) :
@@ -25,6 +30,13 @@ class RoomAdapter(private val rooms: List<Room>, private val resources: Resource
                     binding.peculiarities.apply {
                         this.adapter = adapter
                         layoutManager = StaggeredGridLayoutManager(room.peculiarities.size - 1, StaggeredGridLayoutManager.VERTICAL)
+                    }
+                    pickARoom.setOnClickListener {
+                        val request = NavDeepLinkRequest.Builder
+                            .fromUri(BOOKING_URI.toUri())
+                            .build()
+                        it.findNavController().navigate(request)
+//                        findNavController().navigate(request)
                     }
                 }
             }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/booking_nav_graph"
+    app:startDestination="@id/bookingFragment">
+
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.example.booking.presentation.fragment.BookingFragment"
+        android:label="fragment_booking"
+        tools:layout="@layout/fragment_booking">
+        <deepLink
+            android:id="@+id/booking_deep_link"
+            app:uri="android-app:/booking/" />
+    </fragment>
+
+    <deepLink
+        android:id="@+id/booking_deep_link"
+        app:uri="android-app:/booking/" />
+</navigation>
