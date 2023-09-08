@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.util.Resource
+import com.example.core.domain.util.Status
 import com.example.hotel.data.model.Hotel
 import com.example.hotel.domain.repository.HotelRepository
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -30,7 +32,8 @@ class HotelViewModel @Inject constructor(private val repository: HotelRepository
 
     fun updateHotel() {
         viewModelScope.launch {
-            _hotel.postValue(repository.getHotelInfo())
+            val result = async { repository.getHotelInfo() }
+            _hotel.postValue(result.await().copy(status = Status.SUCCESS))
         }
     }
 }

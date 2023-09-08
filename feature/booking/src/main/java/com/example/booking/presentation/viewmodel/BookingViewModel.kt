@@ -9,6 +9,8 @@ import com.example.booking.data.model.BookingInfo
 import com.example.booking.domain.model.Tourist
 import com.example.booking.domain.repository.BookingRepository
 import com.example.core.domain.util.Resource
+import com.example.core.domain.util.Status
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -32,7 +34,9 @@ class BookingViewModel @Inject constructor(private val repository: BookingReposi
 
     fun updateBookingInfo() {
         viewModelScope.launch {
-            _bookingInfo.postValue(repository.getBookingInfo())
+            val result = async { repository.getBookingInfo() }
+            _bookingInfo.postValue(result.await().copy(status = Status.SUCCESS))
+//            _bookingInfo.postValue(repository.getBookingInfo())
         }
     }
 

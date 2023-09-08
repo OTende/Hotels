@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="more_info">Подробнее о номере</string>
-    <string name="price">%1$d Р</string>
+    <string name="price">%1$d ₽</string>
     <string name="pick_a_room">Выбрать номер</string>
     <string name="room_photo">Фото комнаты</string>
 </resources>

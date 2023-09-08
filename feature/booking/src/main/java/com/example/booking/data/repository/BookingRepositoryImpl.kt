@@ -9,7 +9,7 @@ import javax.inject.Inject
 class BookingRepositoryImpl @Inject constructor(private val bookingApi: BookingApi) : BookingRepository {
     override suspend fun getBookingInfo(): Resource<BookingInfo> {
         return try {
-            Resource.success(bookingApi.getBookingInfo())
+            Resource.loading(bookingApi.getBookingInfo())
         } catch (e: Exception) {
             e.printStackTrace()
             Resource.error(e.message ?: "Ошибка загрузки", null)

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core.domain.util.Status
 import com.example.room.R
@@ -52,7 +53,10 @@ class RoomFragment : Fragment() {
                 }
             }
         }
-//        view.findViewById<TextView>(R.id.asd).text = arguments?.getString("hotelName")
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
 

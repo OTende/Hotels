@@ -36,7 +36,6 @@ class RoomAdapter(private val rooms: List<Room>, private val resources: Resource
                             .fromUri(BOOKING_URI.toUri())
                             .build()
                         it.findNavController().navigate(request)
-//                        findNavController().navigate(request)
                     }
                 }
             }

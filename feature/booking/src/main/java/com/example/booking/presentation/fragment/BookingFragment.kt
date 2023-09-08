@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -62,6 +63,9 @@ class BookingFragment : Fragment() {
             }
         }
 
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
         viewModel.updateBookingInfo()
         viewModel.bookingInfo.observe(viewLifecycleOwner) { value ->
@@ -84,12 +88,18 @@ class BookingFragment : Fragment() {
                                 it.rating,
                                 it.ratingName
                             )
+                            binding.tourPrice.text = getString(R.string.tour_price, it.tourPrice)
+                            binding.fuelPrice.text = getString(R.string.fuel_price, it.fuelCharge)
+                            binding.servicePrice.text = getString(R.string.service_price, it.serviceCharge)
+                            val total = it.tourPrice + it.fuelCharge + it.serviceCharge
+                            binding.totalPrice.text = getString(R.string.total_price, total)
+                            binding.paymentBtn.text = getString(R.string.pay, total)
                         }
                     }
                 }
 
                 Status.LOADING -> {
-
+                    
                 }
 
                 Status.ERROR -> {

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
@@ -73,6 +74,8 @@ class HotelFragment : Fragment() {
                 Status.ERROR -> {
                 }
                 Status.LOADING -> {
+                    binding.hotelProgressBar.visibility = View.VISIBLE
+                    binding.hotelBasics.visibility = View.INVISIBLE
                 }
             }
         }
