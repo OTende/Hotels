@@ -1,4 +1,15 @@
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="booking">Бронирование</string>
+    <string name="flight_from">Вылет из</string>
+    <string name="destination">Страна, город</string>
+    <string name="dates">Даты</string>
+    <string name="nights_number">Кол-во ночей</string>
+    <string name="hotel">Отель</string>
+    <string name="room">Номер</string>
+    <string name="food">Питание</string>
+    <string name="buyer_info">Информация о покупателе</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="email">Почта</string>
+    <string name="nothing">Эти данные никому не передаются. После оплаты мы вышлем чек на указанный вами номер и почту</string>
+    <string name="dates_window">%1$s - %2$s</string>
 </resources>
