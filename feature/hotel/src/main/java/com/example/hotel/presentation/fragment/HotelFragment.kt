@@ -5,11 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.core.domain.util.Status
+import com.example.hotel.R
 import com.example.hotel.databinding.FragmentHotelBinding
 import com.example.hotel.di.DaggerFeatureHotelComponent
+import com.example.hotel.presentation.adapter.PeculiarityAdapter
+import com.example.hotel.presentation.adapter.PhotoAdapter
 import com.example.hotel.presentation.viewmodel.HotelViewModel
 import javax.inject.Inject
 
@@ -39,7 +47,19 @@ class HotelFragment : Fragment() {
         viewModel.hotel.observe(viewLifecycleOwner) { result ->
             when (result.status) {
                 Status.SUCCESS -> {
-//                    binding.asd.text = result.data?.name
+                    result.data?.let {
+                        with(binding) {
+                            hotelName.text = it.name
+                            hotelRating.text = getString(R.string.rating, it.rating, it.ratingName)
+                            address.text = it.address
+                            price.text = getString(R.string.price, it.minimalPrice)
+                            priceDescription.text = it.priceDescription
+                            description.text = it.hotelAbout.description
+                            binding.photos.adapter = PhotoAdapter(it.imageUrls)
+                            binding.peculiarities.adapter = PeculiarityAdapter(it.hotelAbout.peculiarities)
+                            binding.peculiarities.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
+                        }
+                    }
                 }
 
                 Status.ERROR -> {

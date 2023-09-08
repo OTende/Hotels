@@ -37,25 +37,6 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="InfoTagsText" parent="BodyGreyText">
-        <item name="fontFamily">@font/sf_pro_display_bold</item>
-        <item name="android:fontFamily">@font/sf_pro_display_bold</item>
-    </style>
-
-    <style name="ChipGroupItem" parent="Widget.Material3.Chip.Input">
-        <item name="android:textAppearance">@style/InfoTagsText</item>
-        <item name="chipStrokeWidth">0dp</item>
-        <item name="closeIcon">@null</item>
-    </style>
-
-    <style name="RoundCornersView" parent="Widget.Material3.Button">
-        <item name="shapeAppearance">@style/RoundCornersViewShape</item>
-    </style>
-
-    <style name="RoundCornersViewShape" parent="ShapeAppearance.M3.Comp.FilledButton.Container.Shape">
-        <item name="cornerSize">12dp</item>
-    </style>
-
     <style name="BaseText" parent="MaterialAlertDialog.Material3.Body.Text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -73,7 +54,7 @@
 
     <style name="HotelAddressText" parent="BaseText">
         <item name="android:textColor">@color/blue</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:fontFamily">@font/sf_pro_display_bold</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
