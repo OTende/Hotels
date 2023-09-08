@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Hotel</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Отель</string>
+    <string name="star">Звезда</string>
+    <string name="rating">%1$d %2$s</string>
+    <string name="price">От %1$s ₽</string>
+    <string name="facilities">Удобства</string>
+    <string name="included">Что включено</string>
+    <string name="not_included">Что не включено</string>
+    <string name="choose_a_number">К выбору номера</string>
 </resources>
