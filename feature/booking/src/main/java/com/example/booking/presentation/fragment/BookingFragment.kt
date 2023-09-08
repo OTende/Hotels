@@ -2,16 +2,22 @@ package com.example.booking.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booking.R
 import com.example.booking.databinding.FragmentBookingBinding
 import com.example.booking.di.DaggerFeatureHotelComponent
+import com.example.booking.domain.util.PhoneWatcher
+import com.example.booking.presentation.adapter.TouristAdapter
 import com.example.booking.presentation.viewmodel.BookingViewModel
 import com.example.core.domain.util.Status
 import javax.inject.Inject
+
 
 class BookingFragment : Fragment() {
     @Inject
@@ -30,6 +36,16 @@ class BookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookingBinding.inflate(inflater, container, false)
+        val adapter = TouristAdapter()
+        binding.touristsRv.adapter = adapter
+        binding.touristsRv.layoutManager = LinearLayoutManager(requireContext())
+        viewModel.tourists.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+
+        val mask = PhoneWatcher(binding.phoneNumber)
+        mask.setWatcher()
+
         viewModel.updateBookingInfo()
         viewModel.bookingInfo.observe(viewLifecycleOwner) { value ->
             when (value.status) {
