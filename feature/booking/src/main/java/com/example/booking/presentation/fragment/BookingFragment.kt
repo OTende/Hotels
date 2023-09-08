@@ -2,11 +2,10 @@ package com.example.booking.presentation.fragment
 
 import android.content.Context
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booking.R
@@ -17,7 +16,6 @@ import com.example.booking.presentation.adapter.TouristAdapter
 import com.example.booking.presentation.viewmodel.BookingViewModel
 import com.example.core.domain.util.Status
 import javax.inject.Inject
-
 
 class BookingFragment : Fragment() {
     @Inject
@@ -43,6 +41,11 @@ class BookingFragment : Fragment() {
         binding.touristsRv.layoutManager = LinearLayoutManager(requireContext())
         viewModel.tourists.observe(viewLifecycleOwner) {
             adapter.submitList(it)
+        }
+
+        binding.paymentBtn.setOnClickListener {
+            if (adapter.validateAll())
+                Toast.makeText(requireContext(), "asd", Toast.LENGTH_LONG).show()
         }
 
         val mask = PhoneWatcher(binding.phoneNumber)
