@@ -57,7 +57,7 @@ class TouristAdapter(private val resources: Resources, private val onAddClickLis
 
         private fun validate(view: TextInputEditText): Boolean {
             if (view.text.isNullOrEmpty()) {
-                view.error = "asd"
+                view.error = resources.getString(R.string.fill_data)
                 view.setBackgroundColor(resources.getColor(R.color.error_color, resources.newTheme()))
                 return false
             }

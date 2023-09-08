@@ -20,4 +20,10 @@
     <string name="citizenship">Гражданство</string>
     <string name="foreign_passport_number">Номер загранпаспорта</string>
     <string name="foreign_passport_date">Срок действия загранпаспорта</string>
+    <string name="order_is_paid">Заказ оплачен</string>
+    <string name="return_to_booking">Вернуться</string>
+    <string name="order_is_active">Ваш заказ принят в работу</string>
+    <string name="party_popper">Праздничный колпак</string>
+    <string name="order_info">Подтверждение заказа %1$d может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление.</string>
+    <string name="fill_data">Заполните данные</string>
 </resources>

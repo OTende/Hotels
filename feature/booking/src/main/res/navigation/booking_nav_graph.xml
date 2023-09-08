@@ -13,9 +13,17 @@
         <deepLink
             android:id="@+id/booking_deep_link"
             app:uri="android-app:/booking/" />
+        <action
+            android:id="@+id/action_bookingFragment_to_finishFragment"
+            app:destination="@id/finishFragment" />
     </fragment>
 
     <deepLink
         android:id="@+id/booking_deep_link"
         app:uri="android-app:/booking/" />
+    <fragment
+        android:id="@+id/finishFragment"
+        android:name="com.example.booking.presentation.fragment.FinishFragment"
+        android:label="fragment_finish"
+        tools:layout="@layout/fragment_finish" />
 </navigation>

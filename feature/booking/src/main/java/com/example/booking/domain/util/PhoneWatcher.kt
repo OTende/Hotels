@@ -2,10 +2,11 @@ package com.example.booking.domain.util
 
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
+import android.util.Patterns
 import android.widget.EditText
 
-// Гордо украденный у индуса код
-class PhoneWatcher(private val editText: EditText) {
+// Гордо украденный у индуса код с текущей памятью
+class PhoneWatcher(private val editText: EditText, private val errorColorCode: Int) {
     fun setWatcher() {
         editText.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() {
             private var backspacingFlag = false
